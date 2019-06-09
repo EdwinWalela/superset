@@ -3,23 +3,41 @@ template <typename T,int N>
 class SuperArray{
 
 private:
-	T arr[N];
+	T* arr = new T[N];
+	int SIZE = N;
 	int currentIndex = 0;
 	void swap(T* a,T* b){
 		T temp = *a;
 		*a = *b;
 		*b = temp;
 	}
+	T* expand(){
+		SIZE++;
+		T* newArr = new T[SIZE];
+		// Transfer elements to the new array 
+		for(int i = 0; i < SIZE-1; i++){
+			newArr[i] = arr[i];
+		}
+		// delete original array
+		delete[] arr;
+		// return pointer to new array
+		return newArr;
+	}
  public:  
 	int length(){
-		return N;
+		return SIZE;
 	}
 	void push(T value){
-		arr[currentIndex] = value;
-		currentIndex++;
+		if(currentIndex != SIZE){
+			arr[currentIndex] = value;
+			currentIndex++;
+		}else{
+			arr = expand();
+			arr[currentIndex] = value;
+		}
 	}
 	void printArr(){
-		for(int i = 0; i < N; i++)
+		for(int i = 0; i < SIZE; i++)
 		{
 			std::cout<<arr[i]<<" ";
 		}
@@ -66,5 +84,4 @@ private:
 			std::cout<<std::endl;
 		}
 	}
-
 };
