@@ -22,75 +22,6 @@ private:
 		// return pointer to new array
 		return newArr;
 	}
-
- public: 
-	
-	int SIZE;
-	SuperArray(int N = 1){
-		arr = new T[N];
-		SIZE = N;
-	}
-	int length(){
-		return SIZE;
-	}
-	void push(T value){
-		if(currentIndex != SIZE){
-			arr[currentIndex] = value;
-			currentIndex++;
-		}else{
-			arr = expand();
-			arr[currentIndex] = value;
-			currentIndex++;
-		}
-	}
-	void printArr(){
-		for(int i = 0; i < SIZE; i++)
-		{
-			std::cout<<arr[i]<<" ";
-		}
-	}
-	void bubbleSortAscV(){
-		for(int i = 0; i < SIZE -1; i++){
-			for(int j = 0; j < SIZE - i - 1; j++){
-				if(arr[j] > arr[j+1]){
-					swap(&arr[j],&arr[j+1]);
-				}
-			}
-			std::cout<<"pass ("<<i+1<<"): ";
-			printArr();
-			std::cout<<std::endl;
-		}
-	}
-	void bubbleSortAsc(){
-		for(int i = 0; i < SIZE-1; i++){
-			for(int j = 0; j < SIZE - i - 1; j++){
-				if(arr[j] > arr[j+1]){
-					swap(&arr[j],&arr[j+1]);
-				}
-			}
-		}
-	}
-	void bubbleSortDesc(){
-		for(int i = 0; i < SIZE-1; i++){
-			for(int j = 0; j < SIZE - i - 1; j++){
-				if(arr[j] < arr[j+1]){
-					swap(&arr[j],&arr[j+1]);
-				}
-			}
-		}
-	}
-	void bubbleSortDescV(){
-		for(int i = 0; i < SIZE - 1; i++){
-			for(int j = 0; j < SIZE - i - 1; j++){
-				if(arr[j] < arr[j+1]){
-					swap(&arr[j],&arr[j+1]);
-				}
-			}
-			std::cout<<"pass ("<<i+1<<"): ";
-			printArr();
-			std::cout<<std::endl;
-		}
-	}
 	void merge(int from,int to,int mid){
 		int i = from;
 		int j = mid + 1;
@@ -121,6 +52,73 @@ private:
 		// Assign sorted data stored in temp[] to a[]
 		for(i = from; i <= to; i++){
 			arr[i] = temp[i - from];
+		}
+	}
+ public: 
+	int SIZE;
+	SuperArray(int N = 1){
+		arr = new T[N];
+		SIZE = N;
+	}
+	int length(){
+		return SIZE;
+	}
+	void push(T value){
+		if(currentIndex != SIZE){
+			arr[currentIndex] = value;
+			currentIndex++;
+		}else{
+			arr = expand();
+			arr[currentIndex] = value;
+			currentIndex++;
+		}
+	}
+	void print(){
+		for(int i = 0; i < SIZE; i++)
+		{
+			std::cout<<arr[i]<<" ";
+		}
+	}
+	void bubbleSortAscV(){
+		for(int i = 0; i < SIZE -1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
+				if(arr[j] > arr[j+1]){
+					swap(&arr[j],&arr[j+1]);
+				}
+			}
+			std::cout<<"pass ("<<i+1<<"): ";
+			print();
+			std::cout<<std::endl;
+		}
+	}
+	void bubbleSortAsc(){
+		for(int i = 0; i < SIZE-1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
+				if(arr[j] > arr[j+1]){
+					swap(&arr[j],&arr[j+1]);
+				}
+			}
+		}
+	}
+	void bubbleSortDesc(){
+		for(int i = 0; i < SIZE-1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
+				if(arr[j] < arr[j+1]){
+					swap(&arr[j],&arr[j+1]);
+				}
+			}
+		}
+	}
+	void bubbleSortDescV(){
+		for(int i = 0; i < SIZE - 1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
+				if(arr[j] < arr[j+1]){
+					swap(&arr[j],&arr[j+1]);
+				}
+			}
+			std::cout<<"pass ("<<i+1<<"): ";
+			print();
+			std::cout<<std::endl;
 		}
 	}
 	void mergeSort(int from,int to){
