@@ -1,10 +1,9 @@
 #include <iostream>
-template <typename T,int N>
+template <typename T>
 class SuperArray{
 
 private:
-	T* arr = new T[N];
-	int SIZE = N;
+	T* arr;
 	int currentIndex = 0;
 	void swap(T* a,T* b){
 		T temp = *a;
@@ -23,7 +22,14 @@ private:
 		// return pointer to new array
 		return newArr;
 	}
- public:  
+
+ public: 
+	
+	int SIZE;
+	SuperArray(int N = 1){
+		arr = new T[N];
+		SIZE = N;
+	}
 	int length(){
 		return SIZE;
 	}
@@ -34,6 +40,7 @@ private:
 		}else{
 			arr = expand();
 			arr[currentIndex] = value;
+			currentIndex++;
 		}
 	}
 	void printArr(){
@@ -43,8 +50,8 @@ private:
 		}
 	}
 	void bubbleSortAscV(){
-		for(int i = 0; i < N-1; i++){
-			for(int j = 0; j < N - i - 1; j++){
+		for(int i = 0; i < SIZE -1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
 				if(arr[j] > arr[j+1]){
 					swap(&arr[j],&arr[j+1]);
 				}
@@ -55,8 +62,8 @@ private:
 		}
 	}
 	void bubbleSortAsc(){
-		for(int i = 0; i < N-1; i++){
-			for(int j = 0; j < N - i - 1; j++){
+		for(int i = 0; i < SIZE-1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
 				if(arr[j] > arr[j+1]){
 					swap(&arr[j],&arr[j+1]);
 				}
@@ -64,8 +71,8 @@ private:
 		}
 	}
 	void bubbleSortDesc(){
-		for(int i = 0; i < N-1; i++){
-			for(int j = 0; j < N - i - 1; j++){
+		for(int i = 0; i < SIZE-1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
 				if(arr[j] < arr[j+1]){
 					swap(&arr[j],&arr[j+1]);
 				}
@@ -73,8 +80,8 @@ private:
 		}
 	}
 	void bubbleSortDescV(){
-		for(int i = 0; i < N-1; i++){
-			for(int j = 0; j < N - i - 1; j++){
+		for(int i = 0; i < SIZE - 1; i++){
+			for(int j = 0; j < SIZE - i - 1; j++){
 				if(arr[j] < arr[j+1]){
 					swap(&arr[j],&arr[j+1]);
 				}
@@ -82,6 +89,49 @@ private:
 			std::cout<<"pass ("<<i+1<<"): ";
 			printArr();
 			std::cout<<std::endl;
+		}
+	}
+	void merge(int from,int to,int mid){
+		int i = from;
+		int j = mid + 1;
+		int k = 0;
+
+		int temp[to-from+1];
+
+		// Merge the two parts into temp[]
+		while(i <= mid && j<= to){
+			if(arr[i] < arr[j]){
+				temp[k] = arr[i];
+				k++; i++;
+			}else{
+				temp[k] = arr[j];
+				k++;j++;
+			}
+		}
+		// Insert all the remaining values from i to mid into temp[]
+		while(i <= mid){
+			temp[k] = arr[i];
+			k++; i++;
+		}
+		// Insert all the remaining values from j to to into temp[]
+		while(j <= to){
+			temp[k] = arr[j];
+			k++; j++;
+		}
+		// Assign sorted data stored in temp[] to a[]
+		for(i = from; i <= to; i++){
+			arr[i] = temp[i - from];
+		}
+	}
+	void mergeSort(int from,int to){
+		int mid;
+		if(from < to){
+			mid = (from + to) / 2;
+			mergeSort(from,mid);
+			mergeSort(mid+1,to);
+
+			merge(from,to,mid);
+
 		}
 	}
 };
