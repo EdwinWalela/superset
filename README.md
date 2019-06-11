@@ -53,6 +53,7 @@ The SuperArray can be initialized with a size(optional)
     // [2,3,4]
     // Get length of the SuperArray
     arr.length();
+    // 5
   }
 ```
 
