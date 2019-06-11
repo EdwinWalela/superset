@@ -1,7 +1,6 @@
 #include <iostream>
 template <typename T>
 class SuperArray{
-
 private:
 	T* arr;
 	int currentIndex = 0;
@@ -109,7 +108,7 @@ private:
 		std::cout<<"[";
 		for(int i = 0; i < SIZE; i++){
 			char comma = ( i != SIZE-1 ? ',' : ']');
-			std::cout<<i<<comma;
+			std::cout<<arr[i]<<comma;
 		}
 	}
 	void print(int from,int to){
@@ -128,6 +127,17 @@ private:
 				std::cout<<i<<comma;
 			}
 		}
+	}
+	void reverse(){
+		T* temp = new T[SIZE];
+		int newIndex = 0;
+		int arrIndex = SIZE-1;
+		while(arrIndex > 0){
+			temp[newIndex] = arr[arrIndex];
+			newIndex++;arrIndex--;
+		}
+		delete[] arr;
+		arr = temp;
 	}
 	void bubbleSortAscV(){
 		for(int i = 0; i < SIZE -1; i++){

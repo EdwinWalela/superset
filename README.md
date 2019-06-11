@@ -18,13 +18,13 @@ C++ Dynamically sized array with sorting methods
 ## TODO
 - [ ] Merge Sort (Verbose)
 - [ ] Exception Handling (print() method)
-- [ ] Reverse function
+- [x] Reverse function
 - [ ] Union
 - [ ] Intersection
 - [ ] Quick Sort
 - [ ] Radix Sort
 - [ ] Selection Sort
-- [ ] Searching ...
+- [ ] Search Algorithims ...
 
 
 ## Usage
@@ -45,18 +45,23 @@ The SuperArray can be initialized with a size(optional)
       // Add elements to the SuperArray
       arr.push(i);
     }
-    
+
     // Output contents of the SuperArray
     arr.print();
     // [0,1,2,3,4]
 
     // print method can be overloaded by providing limits
-    arr.print(arr.length()/2,arr.length());
+    int mid = arr.length()/2;
+    arr.print(mid,arr.length());
     // [2,3,4]
 
     // Get length of the SuperArray
     arr.length();
     // 5
+
+    // Reverse SuperArray
+    arr.reverse();
+    // [4,3,2,1,0]
   }
 ```
 
