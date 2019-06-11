@@ -46,18 +46,22 @@ The SuperArray can be initialized with a size(optional)
     }
 
     // Output contents of the SuperArray
+
     arr.print(); // [0,1,2,3,4]
 
     // print method can be overloaded by providing limits
+
     int mid = arr.length()/2;
+
     arr.print(mid,arr.length()); // [2,3,4]
 
     // Get length of the SuperArray
+
     arr.length(); // 5
 
     // Reverse SuperArray
-    arr.reverse();
-    // [4,3,2,1,0]
+
+    arr.reverse(); // [4,3,2,1,0]
   }
 ```
 
