@@ -47,9 +47,10 @@ The SuperArray can be initialized with a size(optional)
     }
     // Output contents of the SuperArray
     arr.print();
+    // [0,1,2,3,4]
     // print method can be overloaded by providing limits
     arr.print(arr.length()/2,arr.length());
-    
+    // [2,3,4]
     // Get length of the SuperArray
     arr.length();
   }

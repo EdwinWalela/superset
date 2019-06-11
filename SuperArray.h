@@ -5,11 +5,6 @@ class SuperArray{
 private:
 	T* arr;
 	int currentIndex = 0;
-	void swap(T* a,T* b){
-		T temp = *a;
-		*a = *b;
-		*b = temp;
-	}
 	T* expand(){
 		SIZE++;
 		T* newArr = new T[SIZE];
@@ -21,6 +16,11 @@ private:
 		delete[] arr;
 		// return pointer to new array
 		return newArr;
+	}
+	void swap(T* a,T* b){
+		T temp = *a;
+		*a = *b;
+		*b = temp;
 	}
 	void mergeAsc(int from,int to,int mid){
 		int i = from;
