@@ -86,13 +86,6 @@ private:
 			arr[i] = temp[i - from];
 		}
 	}
-	void print(int from,int to){
-		std::cout<<"[";
-		for(int i = from; i < to+1; i++){
-			std::cout<<i<<" ";
-		}
-		std::cout<<"] ";
-	}
  public: 
 	int SIZE;
 	SuperArray(int N = 1){
@@ -113,9 +106,27 @@ private:
 		}
 	}
 	void print(){
-		for(int i = 0; i < SIZE; i++)
-		{
-			std::cout<<arr[i]<<" ";
+		std::cout<<"[";
+		for(int i = 0; i < SIZE; i++){
+			char comma = ( i != SIZE-1 ? ',' : ']');
+			std::cout<<i<<comma;
+		}
+	}
+	void print(int from,int to){
+		// Printing fowards
+		if(from <= to){
+			std::cout<<"[";
+			for(int i = from; i < to+1; i++){
+				char comma = ( i != to ? ',' : ']');
+				std::cout<<i<<comma;
+			}
+		}else{
+		// Printing backwords
+			std::cout<<"[";
+			for(int i = from; i >= to; i--){
+				char comma = ( i != to ? ',' : ']');
+				std::cout<<i<<comma;
+			}
 		}
 	}
 	void bubbleSortAscV(){
