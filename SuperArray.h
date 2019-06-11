@@ -22,7 +22,7 @@ private:
 		// return pointer to new array
 		return newArr;
 	}
-	void merge(int from,int to,int mid){
+	void mergeAsc(int from,int to,int mid){
 		int i = from;
 		int j = mid + 1;
 		int k = 0;
@@ -53,6 +53,45 @@ private:
 		for(i = from; i <= to; i++){
 			arr[i] = temp[i - from];
 		}
+	}
+	void mergeDesc(int from,int to,int mid){
+		int i = from;
+		int j = mid + 1;
+		int k = 0;
+
+		int temp[to-from+1];
+
+		// Merge the two parts into temp[]
+		while(i <= mid && j<= to){
+			if(arr[i] > arr[j]){
+				temp[k] = arr[i];
+				k++; i++;
+			}else{
+				temp[k] = arr[j];
+				k++;j++;
+			}
+		}
+		// Insert all the remaining values from i to mid into temp[]
+		while(i <= mid){
+			temp[k] = arr[i];
+			k++; i++;
+		}
+		// Insert all the remaining values from j to to into temp[]
+		while(j <= to){
+			temp[k] = arr[j];
+			k++; j++;
+		}
+		// Assign sorted data stored in temp[] to a[]
+		for(i = from; i <= to; i++){
+			arr[i] = temp[i - from];
+		}
+	}
+	void print(int from,int to){
+		std::cout<<"[";
+		for(int i = from; i < to+1; i++){
+			std::cout<<i<<" ";
+		}
+		std::cout<<"] ";
 	}
  public: 
 	int SIZE;
@@ -121,15 +160,39 @@ private:
 			std::cout<<std::endl;
 		}
 	}
-	void mergeSort(int from,int to){
+	void mergeSortAsc(int from,int to){
+		// from = 0 to = 4
+		// [ 5 , 4 , 3 , 2 , 1]
+
+		if(to == SIZE){
+			to--;
+		}
 		int mid;
 		if(from < to){
 			mid = (from + to) / 2;
-			mergeSort(from,mid);
-			mergeSort(mid+1,to);
+			mergeSortAsc(from,mid);
+			mergeSortAsc(mid+1,to);
 
-			merge(from,to,mid);
+			mergeAsc(from,to,mid);
 
 		}
 	}
+	void mergeSortDesc(int from,int to){
+		// from = 0 to = 4
+		// [ 5 , 4 , 3 , 2 , 1]
+
+		if(to == SIZE){
+			to--;
+		}
+		int mid;
+		if(from < to){
+			mid = (from + to) / 2;
+			mergeSortDesc(from,mid);
+			mergeSortDesc(mid+1,to);
+
+			mergeDesc(from,to,mid);
+
+		}
+	}
+	
 };
