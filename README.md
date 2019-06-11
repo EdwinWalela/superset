@@ -42,22 +42,18 @@ The SuperArray can be initialized with a size(optional)
     SuperArray<int> arr;
     
     for(int i = 0; i < 5; i++){
-      // Add elements to the SuperArray
-      arr.push(i);
+      arr.push(i);  // Add elements to the SuperArray
     }
 
     // Output contents of the SuperArray
-    arr.print();
-    // [0,1,2,3,4]
+    arr.print(); // [0,1,2,3,4]
 
     // print method can be overloaded by providing limits
     int mid = arr.length()/2;
-    arr.print(mid,arr.length());
-    // [2,3,4]
+    arr.print(mid,arr.length()); // [2,3,4]
 
     // Get length of the SuperArray
-    arr.length();
-    // 5
+    arr.length(); // 5
 
     // Reverse SuperArray
     arr.reverse();
