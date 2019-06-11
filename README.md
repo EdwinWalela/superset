@@ -15,6 +15,18 @@ C++ Dynamically sized array with sorting methods
 - [x] Bubble Sort (+ verbose)
 - [x] Merge Sort 
 
+## TODO
+- [ ] Merge Sort (Verbose)
+- [ ] Exception Handling (print() method)
+- [ ] Reverse function
+- [ ] Union
+- [ ] Intersection
+- [ ] Quick Sort
+- [ ] Radix Sort
+- [ ] Selection Sort
+- [ ] Searching ...
+
+
 ## Usage
 ### Initialization
 The SuperArray can be initialized with a size(optional)
@@ -35,6 +47,8 @@ The SuperArray can be initialized with a size(optional)
     }
     // Output contents of the SuperArray
     arr.print();
+    // print method can be overloaded by providing limits
+    arr.print(arr.length()/2,arr.length());
     
     // Get length of the SuperArray
     arr.length();
@@ -48,6 +62,7 @@ The SuperArray has 4 modes for each sorting algorigthim
 3. Descending (Desc)
 4. Descending Verbose (DescV)
 
+The Verbose mode provides output at each step/pass of the algorithim
 
 ### 1. Bubble Sort
 ```c++
