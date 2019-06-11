@@ -4,6 +4,7 @@ class SuperArray{
 private:
 	T* arr;
 	int currentIndex = 0;
+	// Methods
 	T* expand(){
 		SIZE++;
 		T* newArr = new T[SIZE];
@@ -138,6 +139,19 @@ private:
 		}
 		delete[] arr;
 		arr = temp;
+	}
+	bool exists(T value,int left,int right){
+		if(left>right){
+			return false;
+		}
+		int mid = (left + right ) / 2;
+		if(arr[mid]==value){
+			return true;
+		}else if(value < arr[mid]){
+			exists(value,left,mid-1);
+		}else if(value > arr[mid]){
+			exists(value,mid+1,right);
+		}
 	}
 	void bubbleSortAscV(){
 		for(int i = 0; i < SIZE -1; i++){
