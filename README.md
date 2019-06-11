@@ -71,8 +71,11 @@ The SuperArray can be initialized with a size(optional)
     bool present = arr.exists(x,0,size);
 
     if(present){
+
       std::cout<<x<<" is present in the SuperArray";
+
     }else{
+      
       std::cout<<x<<" does not exist in the SuperArray";
     }
   }
