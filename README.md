@@ -58,27 +58,49 @@ The SuperArray can be initialized with a size(optional)
     // Get length of the SuperArray
 
     arr.length(); // 5
-
+```
+### Reverse
+```cpp
     // Reverse SuperArray
 
     arr.reverse(); // [4,3,2,1,0]
-
-    // Search for element
-    int x = 0;
+```
+### Search
+```cpp
+    int x = 4;
 
     int size = arr.length();
 
     bool present = arr.exists(x,0,size);
 
     if(present){
-
       std::cout<<x<<" is present in the SuperArray";
-
     }else{
-      
       std::cout<<x<<" does not exist in the SuperArray";
     }
-  }
+```
+### Set Union
+```cpp
+
+    SuperArray<int> arr1;
+
+    for(int i = 0; i < 5; i++){
+      arr1.push(i);
+    }
+    // [0,1,2,3,4]
+
+    SuperArray<int> arr2;
+
+    for(int i = 5; i < 10; i++){
+      arr.push(i);
+    }
+    // [5,6,7,8,9]
+
+    SuperArray<int> setUnion = arr1.setUnion(arr2);
+    join.print();
+    // [0,1,2,3,4,5,6,7,8,9]
+
+  
 ```
 
 ### Sorting Methods
