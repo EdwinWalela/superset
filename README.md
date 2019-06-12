@@ -14,12 +14,13 @@ C++ Dynamically sized array with sorting methods
 - [x] Dynamically sized
 - [x] Bubble Sort (+ verbose)
 - [x] Merge Sort 
+- [x] Reverse function
+- [x] Union
+- [x] Binary Search ( exists( ) method )
 
 ## TODO
 - [ ] Merge Sort (Verbose)
-- [ ] Exception Handling (print() method)
-- [x] Reverse function
-- [ ] Union
+- [ ] Exception Handling ( print( ) method )
 - [ ] Intersection
 - [ ] Quick Sort
 - [ ] Radix Sort
