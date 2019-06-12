@@ -17,6 +17,24 @@ private:
 		// return pointer to new array
 		return newArr;
 	}
+	T* shrink(T arr[],int targetSize){
+		T* newArr = new T[targetSize];
+		for(int i = 0; i < targetSize; i++){
+			newArr[i] = arr[i];
+		}
+		// delete original array
+		delete[] arr;
+		// return pointer to new array
+		return newArr;
+	}
+	bool exists(T value,SuperArray<T> arr,int size){
+		for(int i = 0; i < arr.length(); i++){
+			if(value == arr.at(i)){
+				return true;
+			}
+		}
+		return false;
+	}
 	void swap(T* a,T* b){
 		T temp = *a;
 		*a = *b;
@@ -87,6 +105,7 @@ private:
 		}
 	}
  public: 
+ int MAX = 100;
 	int SIZE;
 	SuperArray(int N = 1){
 		arr = new T[N];
@@ -94,6 +113,9 @@ private:
 	}
 	int length(){
 		return SIZE;
+	}
+	T at(int index){
+		return arr[index];
 	}
 	void push(T value){
 		if(currentIndex != SIZE){
@@ -152,6 +174,24 @@ private:
 		}else if(value > arr[mid]){
 			exists(value,mid+1,right);
 		}
+	}
+	SuperArray<T> setUnion(SuperArray<T> setB){
+		SuperArray<T> set;
+		// sort sets
+		setB.bubbleSortAsc();
+		// perform union    
+		for(int i = 0; i < SIZE; i++){
+			if(!exists(set.at(i),set,MAX)){
+				set.push(arr[i]);
+			}
+		}
+		for(int i = 0; i < setB.length(); i++){
+			if(!exists(setB.at(i),set,MAX)){
+				set.push(setB.at(i));
+			}
+		}
+		set.bubbleSortAsc();
+		return set;
 	}
 	void bubbleSortAscV(){
 		for(int i = 0; i < SIZE -1; i++){
